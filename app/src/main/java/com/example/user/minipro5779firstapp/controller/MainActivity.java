@@ -132,11 +132,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //run the function on the background and add onSuccess listener
         mFusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onSuccess(Location _location) {
                         // Got last known location. In some rare situations this can be null.
                         if (_location != null) {
-                            List<Address> addresses = null;
+                            List<Address> addresses;
                             try {
                                 //format the location to text address
                                 addresses = geocoder.getFromLocation(_location.getLatitude(), _location.getLongitude(), 1);
@@ -147,8 +148,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 e.printStackTrace();
                                 locationText.setText("not found");
                                 Toast.makeText(getApplicationContext(),"fail to find your location",Toast.LENGTH_SHORT).show();
+                            }catch (Exception e){
+                                locationText.setText("can't show the city");
+                                Toast.makeText(getApplicationContext(),"fail to parse your location "+_location.getLongitude()+" , "+_location.getLatitude()+": to a city name",Toast.LENGTH_LONG).show();
+
                             }
-                        }
+                        }else
+                            locationText.setText("not found");
                     }
                 });
     }
@@ -157,11 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         //try again to get the last known location
-        if(v.getId()==R.id.find_location){
-            getLocation();
-            return;
-        }
-
+        if(v.getId()==R.id.find_location) getLocation();
         //add the request to the data base
         else if(v.getId()==R.id.sendBtn){
 
