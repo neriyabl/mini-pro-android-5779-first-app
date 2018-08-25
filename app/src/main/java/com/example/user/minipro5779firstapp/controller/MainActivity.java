@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }catch (Exception e){
                                 locationText.setText("can't show the city");
                                 Toast.makeText(getApplicationContext(),"fail to parse your location "+_location.getLongitude()+" , "+_location.getLatitude()+": to a city name",Toast.LENGTH_LONG).show();
-
+                                location = _location;
                             }
                         }else
                             locationText.setText("not found");
