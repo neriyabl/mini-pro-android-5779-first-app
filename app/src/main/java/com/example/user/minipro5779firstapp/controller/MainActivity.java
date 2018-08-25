@@ -197,7 +197,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     protected Void doInBackground(Context... contexts) {
-                        backend.addRequest(new Client(_name,_phone,_email,source,dest),contexts[0]);
+                        backend.addRequest(new Client(_name, _phone, _email, source.getLatitude(),
+                                source.getLongitude(), dest.getProvider()),contexts[0]);
                         return null;
                     }
                 }.execute(this);

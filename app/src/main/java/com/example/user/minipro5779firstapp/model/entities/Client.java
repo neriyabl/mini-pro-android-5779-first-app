@@ -1,7 +1,5 @@
 package com.example.user.minipro5779firstapp.model.entities;
 
-import android.location.Location;
-
 /**
  * the object we wont to save in the database
  */
@@ -10,20 +8,24 @@ public class Client {
     private String phone;
     private String email;
     private ClientRequestStatus status;
-    private Location source;
-    private Location destination;
+    private double sourceLatitude;
+    private double sourceLongitude;
+    private String destination;
+
 
     // ------- constructors -------
 
-
-    public Client(String name, String phone, String email, Location source, Location destination) {
+    public Client(String name, String phone, String email,
+                  double sourceLatitude, double sourceLongitude, String destination) {
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.source = source;
-        this.destination = destination;
         this.status = ClientRequestStatus.wait;
+        this.sourceLatitude = sourceLatitude;
+        this.sourceLongitude = sourceLongitude;
+        this.destination = destination;
     }
+
 
     // --------- getters & setters --------
 
@@ -52,19 +54,35 @@ public class Client {
         this.email = email;
     }
 
-    public Location getSource() {
-        return source;
+    public ClientRequestStatus getStatus() {
+        return status;
     }
 
-    public void setSource(Location source) {
-        this.source = source;
+    public void setStatus(ClientRequestStatus status) {
+        this.status = status;
     }
 
-    public Location getDestination() {
+    public double getSourceLatitude() {
+        return sourceLatitude;
+    }
+
+    public void setSourceLatitude(double sourceLatitude) {
+        this.sourceLatitude = sourceLatitude;
+    }
+
+    public double getSourceLongitude() {
+        return sourceLongitude;
+    }
+
+    public void setSourceLongitude(double sourceLongitude) {
+        this.sourceLongitude = sourceLongitude;
+    }
+
+    public String getDestination() {
         return destination;
     }
 
-    public void setDestination(Location destination) {
+    public void setDestination(String destination) {
         this.destination = destination;
     }
 }
