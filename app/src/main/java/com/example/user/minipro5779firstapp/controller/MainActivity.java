@@ -34,6 +34,13 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * the first app in the android project
+ *
+ * this is the client app in this app we create a request to get a drive
+ * the request sent to the database in firebase and all drivers in the area
+ * get notification about the new request
+ *
+ *
  * ---list of critical things:
  *
  * 1. change the path to this 'MainActivity' in the AndroidManifest.xml
@@ -59,18 +66,28 @@ import java.util.Locale;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //fregment from google to get location autocomplete field
     private PlaceAutocompleteFragment destination;
+
+    //the user location
     private Location location;
+    //the destination location
     private Location dest=null;
+    //the text-view to show the user location
     private TextView locationText;
 
+    //the text fields of rest fields in the request
     private EditText name;
     private EditText phone;
     private EditText email;
 
+    //if the location not found in this button we try again to find the user location
     private Button find_location;
+    //the send request button
     private Button sendBtn;
 
+
+    //the service provider to get the client location
     private FusedLocationProviderClient mFusedLocationClient;
 
     @Override
@@ -78,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // ----- fins views -----
         destination = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.location);
         locationText = findViewById(R.id.locationText);
         name = findViewById(R.id.name);
@@ -92,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         destination.setHint("Search your destination...");
+        // ----- set the destination location wen the client select location in the fragment
         destination.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -139,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (_location != null) {
                             List<Address> addresses;
                             try {
-                                //format the location to text address
+                                //format the location to text address in this case we show just the city
                                 addresses = geocoder.getFromLocation(_location.getLatitude(), _location.getLongitude(), 1);
                                 locationText.setText(addresses.get(0).getLocality());
                                 //save the location
