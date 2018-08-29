@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -114,7 +115,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         destination.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                dest = new Location(place.getId());
+                dest = new Location(LocationManager.GPS_PROVIDER);
+                dest.setLatitude(place.getLatLng().latitude);
+                dest.setLongitude(place.getLatLng().longitude);
             }
 
             @Override
@@ -198,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     protected Void doInBackground(Context... contexts) {
                         backend.addRequest(new Client(_name, _phone, _email, source.getLatitude(),
-                                source.getLongitude(), dest.getProvider()),contexts[0]);
+                                source.getLongitude(), dest.getLatitude(), dest.getLongitude()),contexts[0]);
                         return null;
                     }
                 }.execute(this);

@@ -10,20 +10,22 @@ public class Client {
     private ClientRequestStatus status;
     private double sourceLatitude;
     private double sourceLongitude;
-    private String destination;
+    private double destinationLatitude;
+    private double destinationLongitude;
 
 
     // ------- constructors -------
 
-    public Client(String name, String phone, String email,
-                  double sourceLatitude, double sourceLongitude, String destination) {
+    public Client(String name, String phone, String email, double sourceLatitude,
+                  double sourceLongitude, double destinationLatitude, double destinationLongitude) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.status = ClientRequestStatus.wait;
         this.sourceLatitude = sourceLatitude;
         this.sourceLongitude = sourceLongitude;
-        this.destination = destination;
+        this.destinationLatitude = destinationLatitude;
+        this.destinationLongitude = destinationLongitude;
     }
 
 
@@ -78,11 +80,19 @@ public class Client {
         this.sourceLongitude = sourceLongitude;
     }
 
-    public String getDestination() {
-        return destination;
+    public double getDestinationLatitude() {
+        return destinationLatitude;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setDestinationLatitude(double destinationLatitude) {
+        this.destinationLatitude = destinationLatitude;
+    }
+
+    public double getDestinationLongitude() {
+        return destinationLongitude;
+    }
+
+    public void setDestinationLongitude(double destinationLongitude) {
+        this.destinationLongitude = destinationLongitude;
     }
 }
