@@ -3,7 +3,7 @@ package com.example.user.minipro5779firstapp.model.entities;
 /**
  * the object we wont to save in the database
  */
-public class Client {
+public class ClientRequest {
     private String name;
     private String phone;
     private String email;
@@ -16,8 +16,8 @@ public class Client {
 
     // ------- constructors -------
 
-    public Client(String name, String phone, String email, double sourceLatitude,
-                  double sourceLongitude, double destinationLatitude, double destinationLongitude) {
+    public ClientRequest(String name, String phone, String email, double sourceLatitude,
+                         double sourceLongitude, double destinationLatitude, double destinationLongitude) {
         this.name = name;
         this.phone = phone;
         this.email = email;

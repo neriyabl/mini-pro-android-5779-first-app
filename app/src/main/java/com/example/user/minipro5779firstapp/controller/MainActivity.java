@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.example.user.minipro5779firstapp.R;
 import com.example.user.minipro5779firstapp.model.backend.Backend;
 import com.example.user.minipro5779firstapp.model.backend.BackendFactory;
-import com.example.user.minipro5779firstapp.model.entities.Client;
+import com.example.user.minipro5779firstapp.model.entities.ClientRequest;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     protected Void doInBackground(Context... contexts) {
-                        backend.addRequest(new Client(_name, _phone, _email, source.getLatitude(),
+                        backend.addRequest(new ClientRequest(_name, _phone, _email, source.getLatitude(),
                                 source.getLongitude(), dest.getLatitude(), dest.getLongitude()),contexts[0]);
                         return null;
                     }

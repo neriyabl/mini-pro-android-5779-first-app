@@ -2,8 +2,8 @@ package com.example.user.minipro5779firstapp.model.backend;
 
 import android.content.Context;
 
-import com.example.user.minipro5779firstapp.model.entities.Client;
+import com.example.user.minipro5779firstapp.model.entities.ClientRequest;
 
 public interface Backend {
-    void addRequest(Client client, final Context context);
+    void addRequest(ClientRequest clientRequest, final Context context);
 }
