@@ -19,7 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Firebase_DBManager implements Backend {
     //for the singleton just BackendFactory can create Firebase_DBManager
     public Firebase_DBManager(BackendFactory.Friend f){
-        //if try to create this with null is throw exception
+        //if try to create Firebase_DBManager with null param
+        //this throw NullPointerException
         f.hashCode();
     }
     //the database reference
